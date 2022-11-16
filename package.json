@@ -17,10 +17,13 @@
   "homepage": "https://t.me/fuccbo11",
   "repository": {
     "type": "git",
-    "url": "KEK"
+    "url": "https://github.com/kozh-0/weather-cli.git"
   },
   "bugs": {
     "url": "https://t.me/fuccbo11",
     "email": "kdaufa@mail.ru"
+  },
+  "dependencies": {
+    "axios": "^1.1.3"
   }
 }
