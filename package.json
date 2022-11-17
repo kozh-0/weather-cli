@@ -1,8 +1,8 @@
 {
-  "name": "weather-cli",
+  "name": "weather-cli-kozh-0",
   "version": "1.0.0",
   "description": "CLI for getting weather",
-  "main": "index.js",
+  "main": "weather.js",
   "bin": {
     "weather": "weather.js"
   },
@@ -17,7 +17,7 @@
   ],
   "author": "Dmitry Kozhevnikov",
   "license": "ISC",
-  "homepage": "https://t.me/fuccbo11",
+  "homepage": "https://github.com/kozh-0",
   "repository": {
     "type": "git",
     "url": "https://github.com/kozh-0/weather-cli.git"
