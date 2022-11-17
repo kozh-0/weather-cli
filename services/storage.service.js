@@ -12,17 +12,19 @@ const TOKEN_LIST = {
 };
 
 const saveKeyValue = async (key, value) => {
-    let data = {};
-    // console.log(`${filePath} ${err ? 'does not exist' : 'exists'}`);
     access(filePath, constants.F_OK, async (err) => {
+        // console.log(`${filePath} ${err ? 'does not exist' : 'exists'}`);
         if (!err) {
-            const file = await promises.readFile(filePath);
-            data = JSON.parse(file);
-        } 
+            const file = await promises.readFile(filePath).then(res => JSON.parse(res));
+            console.log(file);
+            file[key] = value;
+            await promises.writeFile(filePath, JSON.stringify(file));
+        } else {
+            let data = {};
+            data[key] = value;
+            await promises.writeFile(filePath, JSON.stringify(data));
+        }
     });
-    data[key] = value;
-    await promises.writeFile(filePath, JSON.stringify(data));
-    console.log(JSON.stringify(data));
 };
 
 const getKeyValue = async (key) => {
@@ -34,6 +36,7 @@ const getKeyValue = async (key) => {
         console.error("Файла настроек не существует");
     }
 };
+const getCity = async () => await promises.readFile(filePath).then(res => JSON.parse(res).city);
 
-export { saveKeyValue, getKeyValue, TOKEN_LIST };
+export { saveKeyValue, getKeyValue, TOKEN_LIST, getCity };
 
