@@ -6,10 +6,15 @@ import { promises, access, constants } from 'fs';
 
 const filePath = join(homedir(), 'weather-data.json');
 
+const TOKEN_LIST = {
+    token: 'token',
+    city: 'city'
+};
+
 const saveKeyValue = async (key, value) => {
     let data = {};
+    // console.log(`${filePath} ${err ? 'does not exist' : 'exists'}`);
     access(filePath, constants.F_OK, async (err) => {
-        // console.log(`${filePath} ${err ? 'does not exist' : 'exists'}`);
         if (!err) {
             const file = await promises.readFile(filePath);
             data = JSON.parse(file);
@@ -21,15 +26,14 @@ const saveKeyValue = async (key, value) => {
 };
 
 const getKeyValue = async (key) => {
-    access(filePath, constants.F_OK, async (err) => {
-        if (!err) {
-            const file = await promises.readFile(filePath);
-            const data = JSON.parse(file);
-            return data[key];
-        }
-        return undefined;
-    });
+    try {
+        const file = await promises.readFile(filePath);
+        const data = JSON.parse(file);
+        return data[key];
+    } catch (e) {
+        console.error("Файла настроек не существует");
+    }
 };
 
-export { saveKeyValue, getKeyValue };
+export { saveKeyValue, getKeyValue, TOKEN_LIST };
 
