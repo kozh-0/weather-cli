@@ -2,7 +2,7 @@
 import { getArgs } from "./helpers/args.js";
 import { getWeather } from "./services/api.service.js";
 import { printHelp, printSuccess, printError, printWeather } from "./services/log.service.js";
-import { getCity, saveKeyValue, TOKEN_LIST } from "./services/storage.service.js";
+import { getCity, getJSON, saveKeyValue, TOKEN_LIST } from "./services/storage.service.js";
 
 
 const saveToken = async (token) => {
@@ -40,13 +40,17 @@ const getForcast = async () => {
         }
     }
 };
-
+const see = async () => {
+    const res = await getJSON();
+    console.log(res);
+}
 const initCLI = () => {
     const args = getArgs(process.argv);
     // console.log(args);
     if (args.h) return printHelp();
     if (args.t) return saveToken(args.t);
-    if (args.s) return saveCity(args.s);
+    if (args.c) return saveCity(args.c);
+    if (args.l) return see();
     return getForcast();
 };
 

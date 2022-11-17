@@ -37,6 +37,7 @@ const getKeyValue = async (key) => {
     }
 };
 const getCity = async () => await promises.readFile(filePath).then(res => JSON.parse(res).city);
+const getJSON = async () => await promises.readFile(filePath).then(res => JSON.parse(res));
 
-export { saveKeyValue, getKeyValue, TOKEN_LIST, getCity };
+export { saveKeyValue, getKeyValue, TOKEN_LIST, getCity, getJSON };
 
