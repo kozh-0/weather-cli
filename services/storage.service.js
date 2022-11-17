@@ -16,8 +16,8 @@ const saveKeyValue = async (key, value) => {
         // console.log(`${filePath} ${err ? 'does not exist' : 'exists'}`);
         if (!err) {
             const file = await promises.readFile(filePath).then(res => JSON.parse(res));
-            console.log(file);
             file[key] = value;
+            console.log(file);
             await promises.writeFile(filePath, JSON.stringify(file));
         } else {
             let data = {};
