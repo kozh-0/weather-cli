@@ -1,6 +1,6 @@
 {
   "name": "weather-cli-kozh-0",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "description": "CLI for getting weather",
   "main": "weather.js",
   "bin": {
